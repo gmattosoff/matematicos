@@ -2,8 +2,11 @@ Nome do grupo: Matemáticos
 
 Integrantes:
 -Pedro Augusto Brito Castilho Pereira (100954)
+
 -Gustavo Mattos da Silva (99242)
+
 -João Pedro de Jesus Narcizo (10006)
+
 -Ronald Viana 
 
 Nome do projeto: Cursos e Manutenções Residenciais
