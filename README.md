@@ -6,9 +6,9 @@ Integrantes:
 
 -Gustavo Mattos da Silva (99242)
 
--João Pedro de Jesus Narcizo (10006)
+-João Pedro de Jesus Narcizo (100006)
 
--Ronald Viana 
+-Ronald Viana Araújo (102648)
 
 
 Nome do projeto: Cursos e Manutenções Residenciais
