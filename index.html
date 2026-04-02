@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+UNIFECAF Professor: Rodrigo Moreira
+<head>
+<meta charset="UTF-8">
+<title>Demo QA - Formulário Financeiro</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background: #f4f6f8;
+padding: 30px;
+}
+.card {
+max-width: 520px;
+margin: 0 auto;
+background: white;
+padding: 24px;
+border-radius: 12px;
+box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+h1 {
+margin-top: 0;
+font-size: 24px;
+}
+label {
+display: block;
+margin-top: 14px;
+font-weight: bold;
+}
+input {
+width: 100%;
+padding: 10px;
+margin-top: 6px;
+border: 1px solid #cfd8dc;
+border-radius: 8px;
+box-sizing: border-box;
+}
+button {
+margin-top: 18px;
+width: 100%;
+padding: 12px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-size: 16px;
+background: #1565c0;
+color: white;
+}
+#resultMsg {
+margin-top: 18px;
+padding: 12px;
+UNIFECAF Professor: Rodrigo Moreira
+border-radius: 8px;
+display: none;
+font-weight: bold;
+}
+.success {
+display: block !important;
+background: #e8f5e9;
+color: #1b5e20;
+}
+.error {
+display: block !important;
+background: #ffebee;
+color: #b71c1c;
+}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Cadastro Financeiro</h1>
+<p>Preencha os dados abaixo para simular o envio de um registro financeiro.</p>
+<label for="nome">Nome</label>
+<input id="nome" type="text" placeholder="Digite seu nome">
+<label for="email">E-mail</label>
+<input id="email" type="email" placeholder="Digite seu e-mail">
+<label for="valor">Valor</label>
+<input id="valor" type="number" placeholder="Digite um valor">
+<button id="submitBtn" onclick="validarFormulario()">Enviar</button>
+<div id="resultMsg"></div>
+</div>
+<script>
+function validarFormulario() {
+const nome = document.getElementById('nome').value.trim();
+const email = document.getElementById('email').value.trim();
+const valor = document.getElementById('valor').value.trim();
+const msg = document.getElementById('resultMsg');
+msg.className = '';
+msg.style.display = 'none';
+if (!nome || !email || !valor) {
+msg.textContent = 'Erro: todos os campos são obrigatórios.';
+msg.classList.add('error');
+UNIFECAF Professor: Rodrigo Moreira
+return;
+}
+if (!email.includes('@')) {
+msg.textContent = 'Erro: e-mail inválido.';
+msg.classList.add('error');
+return;
+}
+if (Number(valor) <= 0) {
+msg.textContent = 'Erro: o valor deve ser maior que zero.';
+msg.classList.add('error');
+return;
+}
+msg.textContent = `Sucesso: registro criado para ${nome} no valor de R$
+${Number(valor).toFixed(2)}.`;
+msg.classList.add('success');
+}
+</script>
+</body>
+</html>
