@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Cursos e Manutenções Residenciais{% endblock %}
+
+{% block extra_css %}
+<style>
+    body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+    .card { border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; }
+    .btn-primary:hover { transform: scale(1.02); }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card text-center">
+                <div class="card-body p-5">
+                    <h1 class="display-4 mb-3">🏠 Cursos e Manutenções Residenciais</h1>
+                    <p class="lead">Capacite-se para cuidar da sua casa ou iniciar uma carreira como prestador de serviços!</p>
+                    <hr>
+                    <p><strong>Cursos disponíveis:</strong> Pintura Básica | Elétrica Básica | Hidráulica | Carpintaria | Instalação de Móveis</p>
+
+                    {% if session.usuario_id %}
+                        <div class="alert alert-success">
+                            ✅ Bem-vindo, {{ session.usuario_nome }}!<br>
+                            <small>Tipo: {{ session.usuario_tipo }}</small>
+                        </div>
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg m-2">📚 Meus Cursos</a>
+                        <a href="{{ url_for('simulador') }}" class="btn btn-success btn-lg m-2">💰 Simulador de Preços</a>
+                        <a href="{{ url_for('logout') }}" class="btn btn-secondary btn-lg m-2">🚪 Sair</a>
+                    {% else %}
+                        <a href="{{ url_for('cadastro') }}" class="btn btn-primary btn-lg m-2">📝 Cadastre-se</a>
+                        <a href="{{ url_for('login') }}" class="btn btn-success btn-lg m-2">🔑 Login</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

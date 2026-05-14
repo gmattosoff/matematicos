@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Meus Cursos - Cursos Residenciais{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>📚 Meus Cursos</h1>
+        <div>
+            <span class="badge bg-info me-2">Progresso: {{ progresso }}%</span>
+            <a href="{{ url_for('home') }}" class="btn btn-secondary">🏠 Início</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">🚪 Sair</a>
+        </div>
+    </div>
+
+    {% if session.usuario_tipo == 'Prestador' %}
+        <div class="alert alert-warning">
+            💡 Dica: Como prestador, use o
+            <a href="{{ url_for('simulador') }}">Simulador de Precificação</a>
+            para calcular seus orçamentos!
+        </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3>🎨 Pintura Básica</h3>
+                    <p>Aprenda técnicas de pintura, preparação de paredes e acabamentos.</p>
+                    <a href="{{ url_for('video_aula', curso='Pintura Básica') }}" class="btn btn-primary">▶ Assistir aulas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3>⚡ Elétrica Básica</h3>
+                    <p>Segurança elétrica, troca de tomadas, chuveiros e disjuntores.</p>
+                    <a href="{{ url_for('video_aula', curso='Elétrica Básica') }}" class="btn btn-primary">▶ Assistir aulas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-body">
+            <h4>📜 Certificados</h4>
+            {% if progresso >= 100 %}
+                <div class="alert alert-success">
+                    🎉 Parabéns! Você concluiu todos os cursos!
+                    <a href="{{ url_for('certificado') }}" class="btn btn-success mt-2 d-block">Gerar Certificado</a>
+                </div>
+            {% else %}
+                <div class="alert alert-secondary">
+                    Complete todas as aulas e questões para gerar seu certificado profissional.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
